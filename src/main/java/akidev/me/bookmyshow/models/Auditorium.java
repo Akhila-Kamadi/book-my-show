@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,8 +17,8 @@ public class Auditorium extends BaseModel{
     // 1 : m
     // 1 : 1
     //-> 1:m
-    @OneToMany
-    private List<Seat> seats;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Seat> seats = new ArrayList<>();
     private int capacity;
 
     @ElementCollection

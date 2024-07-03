@@ -1,10 +1,12 @@
 package akidev.me.bookmyshow.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,8 +19,8 @@ public class Theatre extends BaseModel{
     // T : A
     // 1 : M
     // 1 : 1
-    @OneToMany(mappedBy = "theatre")
-    private List<Auditorium> auditoriums;
+    @OneToMany(mappedBy = "theatre", fetch = FetchType.EAGER)
+    private List<Auditorium> auditoriums = new ArrayList<>();
 
     // T : S
     // 1 : M
