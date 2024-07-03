@@ -109,11 +109,26 @@ public class BookMyShowApplication implements CommandLineRunner {
 //
 //        AddShowResponseDto response = this.showController.addShow(showRequest);
 
-        BookTicketRequestDto ticketRequest = new BookTicketRequestDto();
-        ticketRequest.setUserId(1L);
-        ticketRequest.setShowSeatIds(List.of(16L,17L,18L));
-        ticketRequest.setShowId(1L);
+        BookTicketRequestDto ticketRequest1 = new BookTicketRequestDto();
+        ticketRequest1.setUserId(1L);
+        ticketRequest1.setShowSeatIds(List.of(44L,45L,46L));
+        ticketRequest1.setShowId(1L);
 
-        this.ticketController.bookTicket(ticketRequest);
+        BookTicketRunner bookTicketRunner1 = new BookTicketRunner(this.ticketController, ticketRequest1);
+
+        BookTicketRequestDto ticketRequest2 = new BookTicketRequestDto();
+        ticketRequest2.setUserId(1L);
+        ticketRequest2.setShowSeatIds(List.of(46L,47L,48L));
+        ticketRequest2.setShowId(1L);
+
+        BookTicketRunner bookTicketRunner2 = new BookTicketRunner(this.ticketController, ticketRequest2);
+
+        Thread t1 = new Thread(bookTicketRunner1);
+        Thread t2 = new Thread(bookTicketRunner2);
+
+        t1.start();
+        t2.start();
+
+        //        this.ticketController.bookTicket(ticketRequest1);
     }
 }
