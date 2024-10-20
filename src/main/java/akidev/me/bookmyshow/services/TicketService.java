@@ -64,7 +64,7 @@ public class TicketService {
         ticket.setTimeOfBooking(new Date());
         ticket.setShowSeats(showSeats);
 
-        ticketRepository.save(ticket);
-        return null;
+
+        return ticketRepository.save(ticket);
     }
 }
