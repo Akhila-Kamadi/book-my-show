@@ -12,7 +12,7 @@ public class AddSeatsRequestDto {
     private Long auditoriumId;
     private Map<SeatType, Integer> seatCount;
 
-    // map -> seatCount
+    // SeatType -> seatCount
     // VIP - 10
     //Platinum -20
     //Gold - 15
